@@ -1,0 +1,39 @@
+syntax = "proto3";
+option go_package = "ggithub.com/kreestree/grpc_server/images_service";
+
+service ImagesService {
+  rpc UploadImage(UploadImageRequest) returns (UploadImageResponse);
+  rpc GetImageList(GetImageListRequest) returns (GetImageListResponse);
+  rpc GetImage(GetImageRequest) returns (GetImageResponse);
+}
+
+message UploadImageRequest {
+  string image_name = 1;
+  bytes image_data = 2;
+}
+
+message UploadImageResponse {
+  string image_name = 1;
+}
+
+message GetImageListRequest {
+}
+
+message ImageInfo{
+  string image_name = 1;
+  string creation_date = 2;
+  string modification_date = 3;
+}
+
+message GetImageListResponse {
+  repeated ImageInfo image_info = 1;
+}
+
+message GetImageRequest {
+  string image_name = 1;
+
+}
+
+message GetImageResponse {
+  bytes image_data = 2;
+}
